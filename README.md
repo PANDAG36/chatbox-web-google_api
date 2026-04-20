@@ -1,4 +1,4 @@
-<img width="1917" height="1079" alt="Screenshot 2026-04-20 143053" src="https://github.com/user-attachments/assets/31461f7a-55a6-42ab-8674-99731e59cb4a" /># 💬 Chat Box Basic (Working Version)
+Chat Box Basic (Working Version)
 
 A simple AI chat application using Flask + Gemini API.
 
