@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            color: azure;
+            padding: 10px;
+            margin: 0;
+        }
+
+        .outline{
+            background-color: black;
+            height: 90vh;
+            width: 60%;
+            position: relative;
+            margin: 30px auto;
+            padding: 10px;
+        }
+
+        #result{
+            color: rgb(0, 0, 0);
+            background-color: brown;
+            padding: 10px;
+        }
+
+        #divtext{
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 95%;
+            display: flex;
+            gap: 10px;
+        }
+
+        #textbar{
+            flex: 1;
+            padding: 5px;
+            height: 30px;
+        }
+
+        #textsentbutton{
+            width: 100px;
+            height: 30px;
+        }
+</style>
+    </style>
+</head>
+<body style="background-image: url('{{ url_for('static', filename='gatoca_.jpg') }}'); background-size: cover;">
+    <div class="outline">
+        <form method="POST" id="divtext">
+            <span>
+                <input type="text" name="input_text" placeholder="enter" id="textbar">
+                <button type="submit" id="textsentbutton">sent</button>
+            </span>
+        </form>
+
+        <h3>Response:</h3>
+            <div id="result">
+                {{ result }}
+            </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chat UI</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background-image: url("{{ url_for('static', filename='gatoca_.jpg') }}");
+    background-size: cover;
+}
+
+/* LEFT SIDE CHAT */
+.chatbox{
+    width: 60%;
+    height: 90vh;
+    margin: 30px 0 30px 30px; /* LEFT aligned */
+    background: rgba(15,15,15,0.95);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* messages */
+.messages{
+    flex:1;
+    padding: 10px;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* bottom start like ChatGPT */
+    gap: 8px;
+
+    color: white;
+}
+
+/* message bubbles */
+.msg{
+    padding: 10px;
+    border-radius: 12px;
+    max-width: 75%;
+    word-wrap: break-word;
+}
+
+/* user right */
+.user{
+    background: #060907;
+    border: #222;
+    align-self: flex-end;
+    text-align: right;
+}
+
+/* bot left */
+.bot{
+    background: #333;
+    align-self: flex-start;
+}
+
+/* input */
+.input-area{
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    background: #111;
+}
+
+input{
+    flex:1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    background: #222;
+    color: white;
+}
+
+button{
+    width: 100px;
+    border: none;
+    border-radius: 6px;
+    background: #0a84ff;
+    color: white;
+    cursor: pointer;
+}
+#headd{
+    position: absolute;
+    right: 220px;
+    top: 40px;
+}
+
+#headd h2{
+    font-family: 'Franklin Gothic Medium';
+    font-size: 50px;
+    color: white;
+    position: relative;
+}
+
+#headd h3{
+    font-size: smaller;
+    font-size: 30px;
+    color: black;
+    position: relative;
+    left: 50px;
+    bottom: 25px;
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="chatbox">
+
+    <div class="messages">
+        {% for msg in chat %}
+            {% if msg.role == "user" %}
+                <div class="msg user">{{ msg.text }}</div>
+            {% else %}
+                <div class="msg bot">{{ msg.text }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <form method="POST" class="input-area">
+        <input type="text" name="input_text" placeholder="Type here..." required>
+        <button type="submit">Send</button>
+    </form>
+
+    
+
+</div>
+
+<div id="headd">
+        <h2>CHATBOX</h2>
+        <h3>using {{model}}</h3>
+    </div>
+
+</body>
+</html>
